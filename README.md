@@ -29,6 +29,24 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+--
+
+Real-world music platforms like Spotify use two main approaches to recommend songs: collaborative filtering, which looks at what similar users listened to, and content-based filtering, which matches songs based on their audio features. My simulation focuses on content-based filtering. It compares each song's attributes directly against a user's taste profile to calculate a relevance score.
+
+Each `Song` in my system stores these features:
+- `genre` (e.g. lofi, pop, rock)
+- `mood` (e.g. chill, happy, intense)
+- `energy` (0 to 1 scale, how intense the song feels)
+- `acousticness` (0 to 1 scale, organic vs electronic sound)
+
+My `UserProfile` stores the user's preferences:
+- `favorite_genre`
+- `favorite_mood`
+- `target_energy`
+- `likes_acoustic` (True/False)
+
+The `Recommender` scores each song using a weighted formula. Genre and mood matches carry the most weight (40% and 35%), while energy proximity accounts for the remaining 25%. Songs are then ranked by score and the top results are returned as recommendations.
+
 ---
 
 ## Getting Started
