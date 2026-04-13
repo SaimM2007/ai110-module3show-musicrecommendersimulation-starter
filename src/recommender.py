@@ -117,5 +117,18 @@ def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tup
         return (song, score, ", ".join(reasons))
     
     scored_songs = [score_and_explain(song) for song in songs]
+    sorted_songs = sorted(scored_songs, key=lambda x: x[1], reverse=True)
     
-    return sorted(scored_songs, key=lambda x: x[1], reverse=True)[:k]
+    # Apply diversity penalty: prevent same artist from appearing more than once
+    results = []
+    seen_artists = set()
+    
+    for song, score, explanation in sorted_songs:
+        artist = song['artist']
+        if artist not in seen_artists:
+            results.append((song, score, explanation))
+            seen_artists.add(artist)
+            if len(results) == k:
+                break
+    
+    return results

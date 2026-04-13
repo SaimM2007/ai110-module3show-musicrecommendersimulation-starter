@@ -115,7 +115,33 @@ Use this section to document the experiments you ran. For example:
 
 Results made sense: Sunrise City scored 93.1/100 as the top pick since it matched both genre (pop) and mood (happy) exactly, plus had very similar energy to the target. Gym Hero ranked #2 with 56.5 because it matched genre but not mood. Rooftop Lights ranked #3 matching mood but not genre. Songs with no categorical matches scored very low (under 25), showing the genre and mood weights are doing their job.
 
-![Terminal output showing top 5 recommendations](screenshot.png)
+![Terminal output showing top 5 recommendations](screenshots/screenshot.png)
+
+# Phase 4, Step 1: Stress Test with Diverse Profiles
+
+**High-Energy Pop**
+![High-Energy Pop results](screenshots/high_energy_pop.png)
+
+**Chill Lofi**
+![Chill Lofi results](screenshots/chill_lofi.png)
+
+**Deep Intense Rock**
+![Deep Intense Rock results](screenshots/deep_intense_rock.png)
+
+**Genre Snob (Adversarial)**
+![Genre Snob results](screenshots/genre_snob.png)
+
+**Contradictory (Adversarial)**
+![Contradictory results](screenshots/contradictory.png)
+
+**Extreme Edges (Adversarial)**
+![Extreme Edges results](screenshots/extreme_edges.png)
+
+--
+
+# Phase 4, Step 3: Feature Removal Experiment (Mood Check Commented Out)
+
+Removing the mood check dropped all scores by up to 30 points. The biggest impact was on profiles where mood was the only categorical match. For example Rooftop Lights dropped from #3 to #5 in the High-Energy Pop profile because it was relying entirely on mood match with no genre match. Focus Flow jumped to #1 in Chill Lofi because without mood as a tiebreaker, pure energy proximity took over. This shows mood is doing real work in the ranking, not just adding noise.
 
 ---
 
