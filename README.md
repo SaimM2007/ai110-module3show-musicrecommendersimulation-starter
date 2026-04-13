@@ -111,6 +111,12 @@ Use this section to document the experiments you ran. For example:
 - What happened when you added tempo or valence to the score
 - How did your system behave for different types of users
 
+# Phase 3, Step 4: CLI Verification
+
+Results made sense: Sunrise City scored 93.1/100 as the top pick since it matched both genre (pop) and mood (happy) exactly, plus had very similar energy to the target. Gym Hero ranked #2 with 56.5 because it matched genre but not mood. Rooftop Lights ranked #3 matching mood but not genre. Songs with no categorical matches scored very low (under 25), showing the genre and mood weights are doing their job.
+
+![Terminal output showing top 5 recommendations](screenshot.png)
+
 ---
 
 ## Limitations and Risks
